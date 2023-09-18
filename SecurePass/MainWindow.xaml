@@ -5,7 +5,7 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:SecurePass"
         mc:Ignorable="d"
-        Title="SecurePass" Height="570" Width="510" FontSize="12">
+        Title="SecurePass" Height="300" Width="510" FontSize="12">
   <Grid>
     <Grid.ColumnDefinitions>
       <ColumnDefinition/>
@@ -20,8 +20,8 @@
       <ListView Margin="0,0,10,0" x:Name="LbNames" Grid.Row="1" SelectionChanged="ListBox_SelectionChanged">
         <ListView.ItemTemplate>
           <DataTemplate>
-            <StackPanel>
-              <TextBlock Text="{Binding Path=name}" Width="210"/>
+            <StackPanel Orientation="Horizontal">
+              <TextBox Text="{Binding Path=name}" Width="100"/>
             </StackPanel>
           </DataTemplate>
         </ListView.ItemTemplate>
@@ -51,35 +51,13 @@
         <Label Content="Email:" Padding="5" Margin="5"/>
         <TextBox x:Name="TxtBoxEmail" BorderThickness="1" Width="120" Text="" Padding="5" Margin="5"/>
       </StackPanel>
-      <StackPanel Orientation="Vertical" Width="220" Margin="0,0,0,20">
-        <Label Content="Accessable with:" Padding="5" Margin="5"/>
-        <ListBox Padding="0" MaxHeight="180" Height="180">
-          <ListBox.ItemTemplate>
-            <DataTemplate>
-              <StackPanel Background="#efefef" Width="214">
-                <WrapPanel>
-                  <TextBox MinWidth="120" BorderThickness="1" Margin="5,5,0,5" Padding="5,5,0,5" HorizontalAlignment="Left" Text=""/>
-                  <Label Content=":" Padding="0,10,10,10"/>
-                </WrapPanel>
-                <WrapPanel>
-                  <TextBox MinWidth="80" BorderThickness="1" Margin="5,5,0,5" Padding="5,5,0,5" Text=""/>
-                  <Label Content=":" Padding="0,10,10,10"/>
-                  <TextBox MinWidth="80" BorderThickness="1" Margin="5" Padding="5" Text=""/>
-                </WrapPanel>
-              </StackPanel>
-            </DataTemplate>
-          </ListBox.ItemTemplate>
-        </ListBox>
-         <StackPanel>
-           <Button Content="+" Width="214" Background="#0000" Click="AddMoreAccessableSource"/>
-        </StackPanel>
-      </StackPanel>
-      <WrapPanel Orientation="Horizontal" Width="220">
+            <WrapPanel Orientation="Horizontal" Width="220">
         <Label Content="Link:" Padding="5" Margin="5"/>
-        <TextBox x:Name="TxtBoxLink" BorderThickness="1" MinWidth="120" Text="" Padding="5" Margin="5"/>
+        <TextBox x:Name="TxtBoxLink" BorderThickness="1" Width="100" MaxWidth="122" Text="" Padding="5" Margin="5"/>
         <Button Content="Open" Background="#0000" Margin="0,5" Width="42" Click="OpenLink"/>
       </WrapPanel>
-      <Button Margin="90,8,0,0" Content="Save" Background="#0000" Width="42" Click="Save"/>
+      <Button Margin="70,8,0,0" Content="💾" Background="#0000" Width="42" Click="Save"/>
+      <Button Content="🗑️" Click="Delete" Margin="10,8,0,0" Background="#0000" Width="42" />
     </WrapPanel>
   </Grid>
 </Window>
