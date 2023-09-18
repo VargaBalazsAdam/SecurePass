@@ -1,0 +1,77 @@
+<Window x:Class="SecurePass.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:SecurePass"
+        mc:Ignorable="d"
+        Title="SecurePass" Height="480" Width="440" FontSize="12">
+  <Grid>
+    <Grid.ColumnDefinitions>
+      <ColumnDefinition/>
+      <ColumnDefinition/>
+    </Grid.ColumnDefinitions>
+    <Grid>
+      <ListBox>
+        <ListBox.ItemTemplate>
+          <DataTemplate>
+            <StackPanel>
+              <TextBlock Text="{Binding Path=name}"/>
+            </StackPanel>
+          </DataTemplate>
+        </ListBox.ItemTemplate>
+        <ListBoxItem Padding="0">
+          <Button Content="+" Width="214" Background="#0000"/>
+        </ListBoxItem>
+      </ListBox>
+    </Grid>
+    <WrapPanel Grid.Column="1">
+      <StackPanel Orientation="Horizontal" Width="220">
+        <Label Content="Username:" Padding="5" Margin="5"/>
+        <TextBox BorderThickness="1" Width="120" Text="" Padding="5" Margin="5"/>
+      </StackPanel>
+      <StackPanel Orientation="Horizontal" Width="220" Margin="0,0,0,20">
+        <Label Content="Password:" Padding="5" Margin="5"/>
+        <TextBox  Text="asdasdasd" BorderThickness="1" Width="120" Padding="5" Margin="5" Visibility="Collapsed"/>
+        <PasswordBox Password="asdasdasd" BorderThickness="1" Width="120" Padding="5" Margin="5" Visibility="Visible"/>
+        <StackPanel>
+          <Button Content="📋" Background="#0000" BorderThickness="0" Padding="0,-2,0,0" Height="15" Margin="0,5,0,1"/>
+          <Button Content="👁" Background="#0000" BorderThickness="0" Padding="0,-2,0,0" Height="15" Margin="0,0,0,5"/>
+        </StackPanel>
+      </StackPanel>
+      <StackPanel Orientation="Horizontal" Width="220" Margin="0,0,0,20">
+        <Label Content="Email:" Padding="5" Margin="5"/>
+        <TextBox BorderThickness="1" Width="120" Text="" Padding="5" Margin="5"/>
+      </StackPanel>
+      <StackPanel Orientation="Vertical" Width="220" Margin="0,0,0,20">
+        <Label Content="Accessable with:" Padding="5" Margin="5"/>
+        <ListBox Padding="0" MaxHeight="180" Height="180">
+          <ListBox.ItemTemplate>
+            <DataTemplate>
+              <StackPanel Background="#efefef" Width="214">
+                <WrapPanel>
+                  <TextBox MinWidth="120" BorderThickness="1" Margin="5,5,0,5" Padding="5,5,0,5" HorizontalAlignment="Left" Text="name"/>
+                  <Label Content=":" Padding="0,10,10,10"/>
+                </WrapPanel>
+                <WrapPanel>
+                  <TextBox MinWidth="80" BorderThickness="1" Margin="5,5,0,5" Padding="5,5,0,5" Text="property"/>
+                  <Label Content=":" Padding="0,10,10,10"/>
+                  <TextBox MinWidth="80" BorderThickness="1" Margin="5" Padding="5" Text="value"/>
+                </WrapPanel>
+              </StackPanel>
+            </DataTemplate>
+          </ListBox.ItemTemplate>
+          <ListBoxItem Padding="0">
+            <Button Content="+" Width="214" Background="#0000"/>
+          </ListBoxItem>
+        </ListBox>
+      </StackPanel>
+      <WrapPanel Orientation="Horizontal" Width="220">
+        <Label Content="Link:" Padding="5" Margin="5"/>
+        <TextBox BorderThickness="1" MinWidth="120" Text="" Padding="5" Margin="5"/>
+        <Button Content="Open" Background="#0000" Margin="0,5" Width="42"/>
+      </WrapPanel>
+      <Button Margin="90,8,0,0" Content="Save" Background="#0000" Width="42"/>
+    </WrapPanel>
+  </Grid>
+</Window>
