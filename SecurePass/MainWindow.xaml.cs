@@ -1,3 +1,4 @@
+using SecurePass.Models;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -20,19 +21,40 @@ namespace SecurePass
   /// </summary>
   public partial class MainWindow : Window
   {
+    private AuthRepository authRepository;
+    public List<Auth> auths { get; set; }
+    public Auth NewAuth { get; set; }
+
     public MainWindow()
     {
       InitializeComponent();
+      authRepository = new AuthRepository();
+      NewAuth = new Auth();
+      auths = authRepository.GetAll().ToList();
+      LbNames.ItemsSource = auths;
     }
 
     private void Save(object sender, RoutedEventArgs e)
     {
-
+      NewAuth = new()
+      {
+        name = TxtBoxTempName.Text,
+        username = TxtBoxUsername.Text,
+        password = TxtBoxPassVisible.Text,
+        email = TxtBoxEmail.Text,
+        link = TxtBoxLink.Text
+      };
+      authRepository.Add(NewAuth);
+      LbItemTempName.Visibility = Visibility.Collapsed;
+      TxtBoxTempName.Text = "";
+      auths.Add(NewAuth);
+      LbNames.ItemsSource = null;
+      LbNames.ItemsSource = auths;
     }
 
     private void CreateNewModel(object sender, RoutedEventArgs e)
     {
-
+      LbItemTempName.Visibility = Visibility.Visible;
     }
 
     private void CopyPasswordToClipboard(object sender, RoutedEventArgs e)
@@ -53,6 +75,21 @@ namespace SecurePass
     private void OpenLink(object sender, RoutedEventArgs e)
     {
 
+    }
+
+    private void PasswordBox_PasswordChanged(object sender, RoutedEventArgs e)
+    {
+      TxtBoxPassVisible.Text = PassBoxPassHidden.Password;
+    }
+
+    private void ListBox_SelectionChanged(object sender, SelectionChangedEventArgs e)
+    {
+
+    }
+
+    private void TxtBoxPassVisible_TextChanged(object sender, TextChangedEventArgs e)
+    {
+      PassBoxPassHidden.Password = TxtBoxPassVisible.Text;
     }
   }
 }
