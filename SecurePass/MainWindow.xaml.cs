@@ -133,7 +133,11 @@ namespace SecurePass
       {
         auths.Remove(itemToRemove);
       }
-
+      TxtBoxUsername.Text = "";
+      TxtBoxPassVisible.Text = "";
+      PassBoxPassHidden.Password = "";
+      TxtBoxEmail.Text = "";
+      TxtBoxLink.Text = "";
       LbNames.Items.Refresh();
     }
   }
