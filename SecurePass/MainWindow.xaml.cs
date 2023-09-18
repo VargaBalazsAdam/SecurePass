@@ -124,7 +124,7 @@ namespace SecurePass
       PassBoxPassHidden.Password = TxtBoxPassVisible.Text;
     }
 
-    private async void Delete(object sender, RoutedEventArgs e)
+    private void Delete(object sender, RoutedEventArgs e)
     {
       authRepository.Delete(id);
 
