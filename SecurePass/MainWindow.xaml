@@ -14,10 +14,15 @@
     <Grid Margin="20,0,0,0" >
       <Grid.RowDefinitions>
         <RowDefinition Height="25"/>
+        <RowDefinition Height="25"/>
         <RowDefinition/>
         <RowDefinition Height="50"/>
       </Grid.RowDefinitions>
-      <ListView Margin="0,0,10,0" x:Name="LbNames" Grid.Row="1" SelectionChanged="ListBox_SelectionChanged">
+      <StackPanel Orientation="Horizontal" Grid.Row="1">
+        <TextBox Width="180" Margin="0,0,6,2" x:Name="TxtBoxSearch"/>
+        <Button Content="🔍" Width="31" Margin="0,0,0,2" Click="Search"/>
+      </StackPanel>
+      <ListView Margin="0,0,10,0" x:Name="LbNames" Grid.Row="2" SelectionChanged="ListBox_SelectionChanged">
         <ListView.ItemTemplate>
           <DataTemplate>
             <StackPanel Orientation="Horizontal">
@@ -29,7 +34,7 @@
       <StackPanel Margin="0,0,10,0" Visibility="Collapsed" x:Name="LbItemTempName" Grid.Row="0">
           <TextBox x:Name="TxtBoxTempName" Text="Name" Width="210"/>
         </StackPanel>
-      <StackPanel Margin="0,0,10,0" Grid.Row="2">
+      <StackPanel Margin="0,0,10,0" Grid.Row="3">
           <Button Content="+" Width="214" Background="#0000" Click="CreateNewModel"/>
         </StackPanel>
     </Grid>
