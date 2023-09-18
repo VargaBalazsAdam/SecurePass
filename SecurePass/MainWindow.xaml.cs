@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -23,6 +23,36 @@ namespace SecurePass
     public MainWindow()
     {
       InitializeComponent();
+    }
+
+    private void Save(object sender, RoutedEventArgs e)
+    {
+
+    }
+
+    private void CreateNewModel(object sender, RoutedEventArgs e)
+    {
+
+    }
+
+    private void CopyPasswordToClipboard(object sender, RoutedEventArgs e)
+    {
+
+    }
+
+    private void ChangeVisibilityOfThePassword(object sender, RoutedEventArgs e)
+    {
+
+    }
+
+    private void AddMoreAccessableSource(object sender, RoutedEventArgs e)
+    {
+
+    }
+
+    private void OpenLink(object sender, RoutedEventArgs e)
+    {
+
     }
   }
 }
