@@ -5,73 +5,59 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:SecurePass"
         mc:Ignorable="d"
-        Title="SecurePass" Height="480" Width="440" FontSize="12">
+        Title="SecurePass" Height="300" Width="510" FontSize="12">
   <Grid>
     <Grid.ColumnDefinitions>
       <ColumnDefinition/>
       <ColumnDefinition/>
     </Grid.ColumnDefinitions>
-    <Grid>
-      <ListBox>
-        <ListBox.ItemTemplate>
+    <Grid Margin="20,0,0,0" >
+      <Grid.RowDefinitions>
+        <RowDefinition Height="25"/>
+        <RowDefinition/>
+        <RowDefinition Height="50"/>
+      </Grid.RowDefinitions>
+      <ListView Margin="0,0,10,0" x:Name="LbNames" Grid.Row="1" SelectionChanged="ListBox_SelectionChanged">
+        <ListView.ItemTemplate>
           <DataTemplate>
-            <StackPanel>
-              <TextBlock Text="{Binding Path=name}"/>
+            <StackPanel Orientation="Horizontal">
+              <TextBox Text="{Binding Path=name}" Width="100"/>
             </StackPanel>
           </DataTemplate>
-        </ListBox.ItemTemplate>
-        <ListBoxItem Padding="0">
-          <Button Content="+" Width="214" Background="#0000"/>
-        </ListBoxItem>
-      </ListBox>
+        </ListView.ItemTemplate>
+      </ListView>
+      <StackPanel Margin="0,0,10,0" Visibility="Collapsed" x:Name="LbItemTempName" Grid.Row="0">
+          <TextBox x:Name="TxtBoxTempName" Text="Name" Width="210"/>
+        </StackPanel>
+      <StackPanel Margin="0,0,10,0" Grid.Row="2">
+          <Button Content="+" Width="214" Background="#0000" Click="CreateNewModel"/>
+        </StackPanel>
     </Grid>
     <WrapPanel Grid.Column="1">
-      <StackPanel Orientation="Horizontal" Width="220">
+      <StackPanel Orientation="Horizontal" Width="220" Margin="0,25,0,0">
         <Label Content="Username:" Padding="5" Margin="5"/>
-        <TextBox BorderThickness="1" Width="120" Text="" Padding="5" Margin="5"/>
+        <TextBox x:Name="TxtBoxUsername" BorderThickness="1" Width="120" Text="" Padding="5" Margin="5"/>
       </StackPanel>
       <StackPanel Orientation="Horizontal" Width="220" Margin="0,0,0,20">
         <Label Content="Password:" Padding="5" Margin="5"/>
-        <TextBox  Text="asdasdasd" BorderThickness="1" Width="120" Padding="5" Margin="5" Visibility="Collapsed"/>
-        <PasswordBox Password="asdasdasd" BorderThickness="1" Width="120" Padding="5" Margin="5" Visibility="Visible"/>
+        <TextBox x:Name="TxtBoxPassVisible" TextChanged="TxtBoxPassVisible_TextChanged" Text="" BorderThickness="1" Width="120" Padding="5" Margin="5" Visibility="Collapsed"/>
+        <PasswordBox x:Name="PassBoxPassHidden" BorderThickness="1" PasswordChanged="PasswordBox_PasswordChanged" Width="120" Padding="5" Margin="5" Visibility="Visible"/>
         <StackPanel>
-          <Button Content="📋" Background="#0000" BorderThickness="0" Padding="0,-2,0,0" Height="15" Margin="0,5,0,1"/>
-          <Button Content="👁" Background="#0000" BorderThickness="0" Padding="0,-2,0,0" Height="15" Margin="0,0,0,5"/>
+          <Button Content="📋" Background="#0000" BorderThickness="0" Padding="0,-2,0,0" Height="15" Margin="0,5,0,1" Click="CopyPasswordToClipboard"/>
+          <Button Content="👁" Background="#0000" BorderThickness="0" Padding="0,-2,0,0" Height="15" Margin="0,0,0,5" Click="ChangeVisibilityOfThePassword"/>
         </StackPanel>
       </StackPanel>
       <StackPanel Orientation="Horizontal" Width="220" Margin="0,0,0,20">
         <Label Content="Email:" Padding="5" Margin="5"/>
-        <TextBox BorderThickness="1" Width="120" Text="" Padding="5" Margin="5"/>
+        <TextBox x:Name="TxtBoxEmail" BorderThickness="1" Width="120" Text="" Padding="5" Margin="5"/>
       </StackPanel>
-      <StackPanel Orientation="Vertical" Width="220" Margin="0,0,0,20">
-        <Label Content="Accessable with:" Padding="5" Margin="5"/>
-        <ListBox Padding="0" MaxHeight="180" Height="180">
-          <ListBox.ItemTemplate>
-            <DataTemplate>
-              <StackPanel Background="#efefef" Width="214">
-                <WrapPanel>
-                  <TextBox MinWidth="120" BorderThickness="1" Margin="5,5,0,5" Padding="5,5,0,5" HorizontalAlignment="Left" Text="name"/>
-                  <Label Content=":" Padding="0,10,10,10"/>
-                </WrapPanel>
-                <WrapPanel>
-                  <TextBox MinWidth="80" BorderThickness="1" Margin="5,5,0,5" Padding="5,5,0,5" Text="property"/>
-                  <Label Content=":" Padding="0,10,10,10"/>
-                  <TextBox MinWidth="80" BorderThickness="1" Margin="5" Padding="5" Text="value"/>
-                </WrapPanel>
-              </StackPanel>
-            </DataTemplate>
-          </ListBox.ItemTemplate>
-          <ListBoxItem Padding="0">
-            <Button Content="+" Width="214" Background="#0000"/>
-          </ListBoxItem>
-        </ListBox>
-      </StackPanel>
-      <WrapPanel Orientation="Horizontal" Width="220">
+            <WrapPanel Orientation="Horizontal" Width="220">
         <Label Content="Link:" Padding="5" Margin="5"/>
-        <TextBox BorderThickness="1" MinWidth="120" Text="" Padding="5" Margin="5"/>
-        <Button Content="Open" Background="#0000" Margin="0,5" Width="42"/>
+        <TextBox x:Name="TxtBoxLink" BorderThickness="1" Width="100" MaxWidth="122" Text="" Padding="5" Margin="5"/>
+        <Button Content="Open" Background="#0000" Margin="0,5" Width="42" Click="OpenLink"/>
       </WrapPanel>
-      <Button Margin="90,8,0,0" Content="Save" Background="#0000" Width="42"/>
+      <Button Margin="70,8,0,0" Content="💾" Background="#0000" Width="42" Click="Save"/>
+      <Button Content="🗑️" Click="Delete" Margin="10,8,0,0" Background="#0000" Width="42" />
     </WrapPanel>
   </Grid>
 </Window>
