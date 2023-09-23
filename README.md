@@ -23,7 +23,7 @@ Before you begin, ensure you have met the following requirements:
 1. Clone this repository:
 
    ```sh
-   git clone https://github.com/VargaBalazsAdam/SecurePass.git
+   git clone https://github.com/VargaBalazsAdam/WPF-Password-Manager.git
    ```
 2. Open the SecurePass solution in Visual Studio or your preferred C# development environment.
 
